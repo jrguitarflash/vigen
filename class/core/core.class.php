@@ -1,5 +1,5 @@
 <?php
-class negocio
+class core
 {
 
 	public function getData($sql)

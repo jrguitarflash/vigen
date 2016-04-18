@@ -13,12 +13,8 @@
     <!-- estilos -->
     <link href="css/estilos.css" rel="stylesheet">
 
-    <!-- jquery -->
-    <script src="js/jquery-2.2.3.js" type="text/javascript"></script>
-
     <!-- js -->
     <script src="js/load.js" type="text/javascript" ></script>
-
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,22 +26,8 @@
 <body>
 
 <!-- view -->
-<input type="hidden" value="login" id="view" >
+<input type="hidden" value="index" id="view" >
 
-<section class="login">
-
-    <h3>Ingreso</h3>
-    <div class="input-group">
-        <form name="login" method="post" action="" >
-        <input type="text" class="form-control" placeholder="user" aria-describedby="sizing-addon2" name="user">
-        <input type="password" class="form-control" placeholder="password" aria-describedby="sizing-addon2" name="password" >
-        <a href="Javascript:ingresar()" class="btn btn-primary" role="button">Login</a></p>
-        <span id="mensaje" >{{ mensaje }}</span>
-        <input type="hidden" name="action" value="logear" >
-        </form>
-    </div>
-
-</section>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

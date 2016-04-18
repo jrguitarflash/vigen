@@ -71,17 +71,22 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
     </div>
 </nav>
 
-<div class=\"user\" >
+<span class=\"user\" >
     ";
         // line 56
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["usuario"]) ? $context["usuario"] : null), "html", null, true);
         echo "
-</div>
+</span>
+
+<span>";
+        // line 59
+        echo twig_escape_filter($this->env, (isset($context["mensaje"]) ? $context["mensaje"] : null), "html", null, true);
+        echo "</span>
 
 ";
-        // line 59
+        // line 61
         $this->displayBlock('content', $context, $blocks);
-        // line 141
+        // line 143
         echo "
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
@@ -91,10 +96,10 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 </html>";
     }
 
-    // line 59
+    // line 61
     public function block_content($context, array $blocks = array())
     {
-        // line 60
+        // line 62
         echo "
 <section>
     <select>
@@ -190,7 +195,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 
     public function getDebugInfo()
     {
-        return array (  98 => 60,  95 => 59,  85 => 141,  83 => 59,  77 => 56,  20 => 1,);
+        return array (  103 => 62,  100 => 61,  90 => 143,  88 => 61,  83 => 59,  77 => 56,  20 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -247,9 +252,11 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*     </div>*/
 /* </nav>*/
 /* */
-/* <div class="user" >*/
-/*     {{ name }}*/
-/* </div>*/
+/* <span class="user" >*/
+/*     {{ usuario }}*/
+/* </span>*/
+/* */
+/* <span>{{ mensaje }}</span>*/
 /* */
 /* {% block content %}*/
 /* */

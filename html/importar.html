@@ -3,11 +3,14 @@
 {% block content %}
 
 <section>
-    <form name="frmImpor" method="post" action="">
+    <form name="import" method="post" action="" enctype="multipart/form-data">
         <label>Importar Data XLS:</label>
-        <input type="file" name="adju">
-        <input type="button" value="Importar" >
+        <input type="file" name="file">
+        <input type="button" value="Importar" onclick="importar();" >
+        <input type="hidden" name="action" value="importar" >
     </form>
 </section>
+
+<div>{{ excel }}</div>
 
 {% endblock %}

@@ -31,8 +31,12 @@ class __TwigTemplate_55b63fb3681e964e41be81b152e60c806f45ba994af7d1868e2bcc8e097
     <!-- estilos -->
     <link href=\"css/estilos.css\" rel=\"stylesheet\">
 
+    <!-- jquery -->
+    <script src=\"js/jquery-2.2.3.js\" type=\"text/javascript\"></script>
+
     <!-- js -->
     <script src=\"js/load.js\" type=\"text/javascript\" ></script>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,13 +54,16 @@ class __TwigTemplate_55b63fb3681e964e41be81b152e60c806f45ba994af7d1868e2bcc8e097
 
     <h3>Ingreso</h3>
     <div class=\"input-group\">
-        <input type=\"text\" class=\"form-control\" placeholder=\"user\" aria-describedby=\"sizing-addon2\">
-        <input type=\"password\" class=\"form-control\" placeholder=\"password\" aria-describedby=\"sizing-addon2\">
+        <form name=\"login\" method=\"post\" action=\"\" >
+        <input type=\"text\" class=\"form-control\" placeholder=\"user\" aria-describedby=\"sizing-addon2\" name=\"user\">
+        <input type=\"password\" class=\"form-control\" placeholder=\"password\" aria-describedby=\"sizing-addon2\" name=\"password\" >
         <a href=\"Javascript:ingresar()\" class=\"btn btn-primary\" role=\"button\">Login</a></p>
-        ";
-        // line 38
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
-        echo "
+        <span id=\"mensaje\" >";
+        // line 43
+        echo twig_escape_filter($this->env, (isset($context["mensaje"]) ? $context["mensaje"] : null), "html", null, true);
+        echo "</span>
+        <input type=\"hidden\" name=\"action\" value=\"logear\" >
+        </form>
     </div>
 
 </section>
@@ -81,7 +88,7 @@ class __TwigTemplate_55b63fb3681e964e41be81b152e60c806f45ba994af7d1868e2bcc8e097
 
     public function getDebugInfo()
     {
-        return array (  58 => 38,  19 => 1,);
+        return array (  63 => 43,  19 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -99,8 +106,12 @@ class __TwigTemplate_55b63fb3681e964e41be81b152e60c806f45ba994af7d1868e2bcc8e097
 /*     <!-- estilos -->*/
 /*     <link href="css/estilos.css" rel="stylesheet">*/
 /* */
+/*     <!-- jquery -->*/
+/*     <script src="js/jquery-2.2.3.js" type="text/javascript"></script>*/
+/* */
 /*     <!-- js -->*/
 /*     <script src="js/load.js" type="text/javascript" ></script>*/
+/* */
 /* */
 /*     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->*/
 /*     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->*/
@@ -118,10 +129,13 @@ class __TwigTemplate_55b63fb3681e964e41be81b152e60c806f45ba994af7d1868e2bcc8e097
 /* */
 /*     <h3>Ingreso</h3>*/
 /*     <div class="input-group">*/
-/*         <input type="text" class="form-control" placeholder="user" aria-describedby="sizing-addon2">*/
-/*         <input type="password" class="form-control" placeholder="password" aria-describedby="sizing-addon2">*/
+/*         <form name="login" method="post" action="" >*/
+/*         <input type="text" class="form-control" placeholder="user" aria-describedby="sizing-addon2" name="user">*/
+/*         <input type="password" class="form-control" placeholder="password" aria-describedby="sizing-addon2" name="password" >*/
 /*         <a href="Javascript:ingresar()" class="btn btn-primary" role="button">Login</a></p>*/
-/*         {{ name }}*/
+/*         <span id="mensaje" >{{ mensaje }}</span>*/
+/*         <input type="hidden" name="action" value="logear" >*/
+/*         </form>*/
 /*     </div>*/
 /* */
 /* </section>*/

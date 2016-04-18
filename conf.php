@@ -6,10 +6,10 @@
 
 	function conectar()
 	{
-		$servidor = "localhost";
-		$usuario = "oct27eld_ew";
-		$password = "Ser651171ew";
-		$base_de_datos = "oct27eld_ew";
+		$servidor = "192.168.1.190";
+		$usuario = "root";
+		$password = "toor";
+		$base_de_datos = "vigencia";
 		// ***** Conexion a Base de Datos *****
 		$cn = mysql_connect ($servidor,$usuario,$password) or die('Imposible conectarse con Jano, en Mantemiento disculpe las molestias..!');
 		mysql_select_db($base_de_datos) or die('Imposible conectarse con la Base de Datos Jano en Mantemiento disculpe las molestias..!');
