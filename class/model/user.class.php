@@ -47,10 +47,9 @@
             $usu=self::user_alias_get();
             $clav=self::user_pass_get();
 
-            $data=Array();
-            $data=sql::vali_usu($usu,$clav);
+            $sql=sql::vali_usu($usu,$clav);
 
-            return $data;
+            return $sql;
         }
 
     }

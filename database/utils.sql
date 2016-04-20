@@ -17,3 +17,17 @@
 /* ejecutar procedure */
 
     call vali_usu('admi','admin');
+    
+/* add cc,proye in vigen */ 
+
+	alter table vigen
+    add vigen_cc char(15) after tip_prod_id,
+    add vigen_proy varchar(200) after vigen_cc;
+    
+/* convertir fecha */
+
+	SELECT DATE_FORMAT('20/04/2016', "%d/%m/%Y %H:%m:%s") AS 'NAME';
+    
+/* vigen a pk */
+	alter table vigen
+	change vigen_id vigen_id int(11) primary key auto_increment;     

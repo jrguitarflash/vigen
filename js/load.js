@@ -38,9 +38,9 @@ function salir()
     {
         //location.href="index.php?view=login";
 
-        param="json=salir";
+        param="view=salir";
 
-        $.getJSON('json/json.php?'+param,{format: "json"}, function(data)
+        $.getJSON('json.php?'+param,{format: "json"}, function(data)
         {
             if(data[0]==1)
             {
@@ -61,9 +61,9 @@ function ingresar()
 //evaluar sesion
 function evaSesi(view)
 {
-    param="json=evaSesi";
+    param="view=evaSesi";
 
-    $.getJSON('json/json.php?'+param,{format: "json"}, function(data)
+    $.getJSON('json.php?'+param,{format: "json"}, function(data)
     {
         //si existe
         console.log(data[0]);
@@ -95,4 +95,31 @@ function evaSesi(view)
 function importar()
 {
     document.import.submit();
+}
+
+//cargar data
+function cargData()
+{
+    $('#mensaje').html("<img src='images/loading.gif' width='10%' >");
+
+    file=$('#fileCarg').text();
+    console.log(file);
+
+    param="view=cargData";
+    param+="&file="+file;
+
+    $.getJSON('json.php?'+param,{format: "json"}, function(data)
+    {
+        console.log(data[0]);
+        if(data[0]>0)
+        {
+            $('#mensaje').text("data cargada correctamente...!");
+            $('#dataExcel').html("");
+            $('#fileCarg').html("");
+        }
+        else
+        {
+            $('#mensaje').text("data no cargada....!");
+        }
+    });
 }

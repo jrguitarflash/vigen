@@ -7,10 +7,12 @@
         <label>Importar Data XLS:</label>
         <input type="file" name="file">
         <input type="button" value="Importar" onclick="importar();" >
+        <input type="button" value="Cargar" onclick="cargData();" >
         <input type="hidden" name="action" value="importar" >
     </form>
 </section>
 
-<div>{{ excel }}</div>
+<span id="fileCarg" >{{ file }}</span>
+<div id="dataExcel" >{{ excel|raw }}</div>
 
 {% endblock %}

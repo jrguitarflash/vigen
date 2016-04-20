@@ -8,3 +8,13 @@
     display:block;
     text-align:right;
 }
+
+#tabImpor
+{
+    border:1px solid silver;
+}
+
+#tabImpor tr td
+{
+    border:1px solid silver;
+}

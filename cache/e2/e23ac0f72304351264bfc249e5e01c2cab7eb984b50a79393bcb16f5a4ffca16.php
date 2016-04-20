@@ -32,6 +32,9 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
     <!-- estilos -->
     <link href=\"css/estilos.css\" rel=\"stylesheet\">
 
+    <!-- jquery -->
+    <script src=\"js/jquery-2.2.3.js\" type=\"text/javascript\"></script>
+
     <!-- js -->
     <script src=\"js/load.js\" type=\"text/javascript\" ></script>
 
@@ -73,20 +76,20 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 
 <span class=\"user\" >
     ";
-        // line 56
+        // line 59
         echo twig_escape_filter($this->env, (isset($context["usuario"]) ? $context["usuario"] : null), "html", null, true);
         echo "
 </span>
 
-<span>";
-        // line 59
+<span id=\"mensaje\" >";
+        // line 62
         echo twig_escape_filter($this->env, (isset($context["mensaje"]) ? $context["mensaje"] : null), "html", null, true);
         echo "</span>
 
 ";
-        // line 61
+        // line 64
         $this->displayBlock('content', $context, $blocks);
-        // line 143
+        // line 135
         echo "
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
@@ -96,10 +99,10 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 </html>";
     }
 
-    // line 61
+    // line 64
     public function block_content($context, array $blocks = array())
     {
-        // line 62
+        // line 65
         echo "
 <section>
     <select>
@@ -120,8 +123,9 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
         <option>Accesorios</option>
         <option>Servicios</option>
     </select>
-    <input type=\"text\" placeholder=\"Factura\" >
-    <input type=\"text\" placeholder=\"Serie\" >
+    <input type=\"text\" placeholder=\"CC\" >
+    <!--<input type=\"text\" placeholder=\"Factura\" >-->
+    <!--<input type=\"text\" placeholder=\"Serie\" >-->
 </section>
 
 <table class=\"table\">
@@ -129,55 +133,100 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
     <thead>
     <tr>
         <th>#</th>
-        <th>Tipo</th>
-        <th>Descripcion</th>
-        <th>Serie</th>
-        <th>Marca</th>
+        <th>CC</th>
+        <th>Proyecto</th>
         <th>Cliente</th>
         <th>Factura</th>
+        <th>Tip Prod</th>
+        <th>Des Prod</th>
+        <th>Serie</th>
+        <th>Marca</th>
         <th>Fecha Inicial</th>
-        <th>Tiempo de vigencia</th>
+        <th>Fecha de vigencia</th>
         <th>vigencia</th>
+        <th>Dias</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope=\"row\">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope=\"row\">2</th>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope=\"row\">3</th>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-    </tr>
-    </tbody>
+    ";
+        // line 110
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["vigen"]) ? $context["vigen"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["vig"]) {
+            // line 111
+            echo "    <tr>
+        <th scope=\"row\">";
+            // line 112
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_id", array()), "html", null, true);
+            echo "</th>
+        <td>";
+            // line 113
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_cc", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 114
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_proy", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 115
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_cli", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 116
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_fac", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 117
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "tip_prod", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 118
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_des", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 119
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_seri", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 120
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_mar", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 121
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_fechIni", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 122
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_fechVigen", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 123
+            echo $this->getAttribute($context["vig"], "esta_vigen", array());
+            echo "</td>
+        ";
+            // line 124
+            if (($this->getAttribute($context["vig"], "dif_fech", array()) > 0)) {
+                // line 125
+                echo "        <td>";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "dif_fech", array()), "html", null, true);
+                echo "</td>
+        ";
+            } else {
+                // line 127
+                echo "        <td>";
+                echo twig_escape_filter($this->env, ($this->getAttribute($context["vig"], "dif_fech", array()) *  -1), "html", null, true);
+                echo "</td>
+        ";
+            }
+            // line 129
+            echo "    </tr>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['vig'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 131
+        echo "    </tbody>
 </table>
 
 ";
@@ -195,7 +244,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 
     public function getDebugInfo()
     {
-        return array (  103 => 62,  100 => 61,  90 => 143,  88 => 61,  83 => 59,  77 => 56,  20 => 1,);
+        return array (  229 => 131,  222 => 129,  216 => 127,  210 => 125,  208 => 124,  204 => 123,  200 => 122,  196 => 121,  192 => 120,  188 => 119,  184 => 118,  180 => 117,  176 => 116,  172 => 115,  168 => 114,  164 => 113,  160 => 112,  157 => 111,  153 => 110,  106 => 65,  103 => 64,  93 => 135,  91 => 64,  86 => 62,  80 => 59,  20 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -212,6 +261,9 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /* */
 /*     <!-- estilos -->*/
 /*     <link href="css/estilos.css" rel="stylesheet">*/
+/* */
+/*     <!-- jquery -->*/
+/*     <script src="js/jquery-2.2.3.js" type="text/javascript"></script>*/
 /* */
 /*     <!-- js -->*/
 /*     <script src="js/load.js" type="text/javascript" ></script>*/
@@ -256,7 +308,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*     {{ usuario }}*/
 /* </span>*/
 /* */
-/* <span>{{ mensaje }}</span>*/
+/* <span id="mensaje" >{{ mensaje }}</span>*/
 /* */
 /* {% block content %}*/
 /* */
@@ -279,8 +331,9 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*         <option>Accesorios</option>*/
 /*         <option>Servicios</option>*/
 /*     </select>*/
-/*     <input type="text" placeholder="Factura" >*/
-/*     <input type="text" placeholder="Serie" >*/
+/*     <input type="text" placeholder="CC" >*/
+/*     <!--<input type="text" placeholder="Factura" >-->*/
+/*     <!--<input type="text" placeholder="Serie" >-->*/
 /* </section>*/
 /* */
 /* <table class="table">*/
@@ -288,54 +341,42 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*     <thead>*/
 /*     <tr>*/
 /*         <th>#</th>*/
-/*         <th>Tipo</th>*/
-/*         <th>Descripcion</th>*/
-/*         <th>Serie</th>*/
-/*         <th>Marca</th>*/
+/*         <th>CC</th>*/
+/*         <th>Proyecto</th>*/
 /*         <th>Cliente</th>*/
 /*         <th>Factura</th>*/
+/*         <th>Tip Prod</th>*/
+/*         <th>Des Prod</th>*/
+/*         <th>Serie</th>*/
+/*         <th>Marca</th>*/
 /*         <th>Fecha Inicial</th>*/
-/*         <th>Tiempo de vigencia</th>*/
+/*         <th>Fecha de vigencia</th>*/
 /*         <th>vigencia</th>*/
+/*         <th>Dias</th>*/
 /*     </tr>*/
 /*     </thead>*/
 /*     <tbody>*/
+/*     {% for vig in vigen %}*/
 /*     <tr>*/
-/*         <th scope="row">1</th>*/
-/*         <td>Mark</td>*/
-/*         <td>Otto</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>Mark</td>*/
-/*         <td>Otto</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
+/*         <th scope="row">{{ vig.vigen_id }}</th>*/
+/*         <td>{{ vig.vigen_cc }}</td>*/
+/*         <td>{{ vig.vigen_proy }}</td>*/
+/*         <td>{{ vig.vigen_cli }}</td>*/
+/*         <td>{{ vig.vigen_fac }}</td>*/
+/*         <td>{{ vig.tip_prod }}</td>*/
+/*         <td>{{ vig.vigen_des }}</td>*/
+/*         <td>{{ vig.vigen_seri }}</td>*/
+/*         <td>{{ vig.vigen_mar }}</td>*/
+/*         <td>{{ vig.vigen_fechIni }}</td>*/
+/*         <td>{{ vig.vigen_fechVigen }}</td>*/
+/*         <td>{{ vig.esta_vigen|raw }}</td>*/
+/*         {% if vig.dif_fech>0 %}*/
+/*         <td>{{ vig.dif_fech }}</td>*/
+/*         {% else %}*/
+/*         <td>{{ vig.dif_fech*-1 }}</td>*/
+/*         {% endif %}*/
 /*     </tr>*/
-/*     <tr>*/
-/*         <th scope="row">2</th>*/
-/*         <td>Otto</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>Mark</td>*/
-/*         <td>Otto</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*     </tr>*/
-/*     <tr>*/
-/*         <th scope="row">3</th>*/
-/*         <td>Otto</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>Mark</td>*/
-/*         <td>Otto</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*         <td>@mdo</td>*/
-/*     </tr>*/
+/*     {% endfor %}*/
 /*     </tbody>*/
 /* </table>*/
 /* */
