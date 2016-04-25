@@ -212,9 +212,21 @@
 				$user=$_SESSION['user'];
 
 				$sql=vigen::obt_vigen();
-				$data=core::getData($sql);
+				$dataVig=core::getData($sql);
 
-				echo $twig->render('home.html', array('mensaje' => 'Mensaje','usuario'=>$user,'vigen'=>$data));
+				desconectar();
+				conectar();
+
+				$sql=tip_prod::obt_tipProd();
+				$dataTip=core::getData($sql);
+
+				desconectar();
+				conectar();
+
+				$sql=vigen::obt_anVen();
+				$dataAn=core::getData($sql);
+
+				echo $twig->render('home.html', array('mensaje' => 'Mensaje','usuario'=>$user,'vigen'=>$dataVig,'tipProd'=>$dataTip,'anVen'=>$dataAn));
 
 			break;
 

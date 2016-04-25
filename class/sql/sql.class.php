@@ -3,6 +3,20 @@
 class sql
 {
 
+    public function obt_anVen()
+    {
+        $sql="call obt_anVen()";
+
+        return $sql;
+    }
+
+    public function obt_tipProd()
+    {
+        $sql="call obt_tipProd()";
+
+        return $sql;
+    }
+
     public function obt_vigen()
     {
         $sql="call obt_vigen()";

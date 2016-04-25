@@ -31,6 +31,13 @@
         }
 
         //EXT
+
+        public function obt_tipProd()
+        {
+            $sql=sql::obt_tipProd();
+
+            return $sql;
+        }
     }
 
 ?>

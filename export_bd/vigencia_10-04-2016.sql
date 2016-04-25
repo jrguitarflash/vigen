@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 192.168.1.190
--- Tiempo de generación: 26-04-2016 a las 01:37:48
+-- Tiempo de generación: 21-04-2016 a las 01:23:06
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -24,32 +24,6 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`%` PROCEDURE `obt_anVen`()
-    COMMENT 'obt min y max año'
-BEGIN
-    
-		select distinct YEAR(vigen_fechVigen) as anVen
-               from
-               vigen order by YEAR(vigen_fechVigen);
-    
-    end$$
-
-CREATE DEFINER=`root`@`%` PROCEDURE `obt_ccVig`()
-    COMMENT 'obt cc vigen'
-BEGIN
-    
-		select distinct vigen_cc as cc_vigen from vigen;
-    
-    end$$
-
-CREATE DEFINER=`root`@`%` PROCEDURE `obt_tipProd`()
-    COMMENT 'obtener tip prod'
-BEGIN
-    
-		SELECT * FROM tip_prod;
-    
-    end$$
-
 CREATE DEFINER=`root`@`%` PROCEDURE `obt_vigen`()
     COMMENT 'obtener vigencias'
 BEGIN
@@ -140,7 +114,7 @@ INSERT INTO `tip_prod` (`tip_prod_id`, `tip_prod_des`) VALUES
 (1, 'accesorios'),
 (2, 'suministros'),
 (3, 'servicios'),
-(4, 'otros');
+(4, 'ninguno');
 
 -- --------------------------------------------------------
 
@@ -205,10 +179,10 @@ INSERT INTO `vigen` (`vigen_id`, `tip_prod_id`, `vigen_cc`, `vigen_proy`, `vigen
 (14, 2, 'cc-1113', 'suministro y servicio', 'abc', '336', 'entec', 'luz del sur', '343447', '2016-04-26', '2016-04-26'),
 (15, 2, 'cc-1114', 'suministro y servicio', 'abc', '337', 'entec', 'luz del sur', '343448', '2016-04-27', '2016-04-27'),
 (16, 2, 'cc-1115', 'suministro y servicio', 'abc', '338', 'entec', 'luz del sur', '343449', '2016-04-28', '2016-04-28'),
-(17, 2, 'cc-1116', 'suministro y servicio', 'abc', '339', 'entec', 'luz del sur', '343450', '2016-04-29', '2019-04-29'),
+(17, 2, 'cc-1116', 'suministro y servicio', 'abc', '339', 'entec', 'luz del sur', '343450', '2016-04-29', '2016-04-29'),
 (18, 2, 'cc-1117', 'suministro y servicio', 'abc', '340', 'entec', 'luz del sur', '343451', '2016-04-30', '2016-04-30'),
 (19, 2, 'cc-1118', 'suministro y servicio', 'abc', '341', 'entec', 'luz del sur', '343452', '2016-05-01', '2016-05-01'),
-(20, 2, 'cc-1119', 'suministro y servicio', 'abc', '342', 'entec', 'luz del sur', '343453', '2016-05-02', '2017-01-09');
+(20, 2, 'cc-1119', 'suministro y servicio', 'abc', '342', 'entec', 'luz del sur', '343453', '2016-05-02', '2016-05-02');
 
 --
 -- Restricciones para tablas volcadas

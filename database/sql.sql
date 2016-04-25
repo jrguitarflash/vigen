@@ -32,6 +32,12 @@
 	
     #obtener vigen
     call obt_vigen();
+    
+    #obtener tip prod
+    call obt_tipProd();
+    
+    #obt cc vigen
+    call obt_ccVig();
 
 /* PROCEDURE */
 
@@ -57,6 +63,38 @@
         datediff(now(),vig.vigen_fechVigen) as dif_fech,
         (select if(dif_fech<0,'por vencer','vencido')) as esta_vigen
         from vigen as vig;
+    
+    end;
+
+	#obtener tip prod
+    DELIMITER $$
+    create procedure obt_tipProd()
+    COMMENT 'obtener tip prod'
+    BEGIN
+    
+		SELECT * FROM tip_prod;
+    
+    end;
+
+	#obt año venc
+    DELIMITER $$
+    create procedure obt_anVen()
+    COMMENT 'obt min y max año'
+    BEGIN
+    
+		select distinct YEAR(vigen_fechVigen) as anVen
+               from
+               vigen order by YEAR(vigen_fechVigen);
+    
+    end;
+
+	#obt cc vigen
+    DELIMITER $$
+    create procedure obt_ccVig()
+    COMMENT 'obt cc vigen'
+    BEGIN
+    
+		select distinct vigen_cc as cc_vigen from vigen;
     
     end;
 
@@ -108,3 +146,4 @@
 		
     
     END;
+    

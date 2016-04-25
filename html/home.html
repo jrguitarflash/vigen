@@ -65,22 +65,21 @@
 
 <section>
     <select>
-        <option>todas</option>
-        <option>vencidas</option>
-        <option>por vencer</option>
+        <option value="0" >Todas</option>
+        <option value="1" >vencidas</option>
+        <option value="2" >por vencer</option>
     </select>
     <select>
-        <option>todas</option>
-        <option>2016</option>
-        <option>2015</option>
-        <option>2014</option>
-        <option>2013</option>
+        <option value="0" >Todas</option>
+        {% for an in anVen %}
+        <option value="{{ an.anVen }}" >{{ an.anVen }}</option>
+        {% endfor %}
     </select>
     <select>
-        <option>Todas</option>
-        <option>Suministros</option>
-        <option>Accesorios</option>
-        <option>Servicios</option>
+        <option value="0" >Todas</option>
+        {% for tip in tipProd %}
+        <option value="{{ tip.tip_prod_id }}" >{{ tip.tip_prod_des }}</option>
+        {% endfor %}
     </select>
     <input type="text" placeholder="CC" >
     <!--<input type="text" placeholder="Factura" >-->

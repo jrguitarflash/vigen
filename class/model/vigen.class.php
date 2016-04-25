@@ -169,6 +169,13 @@ class vigen
 
         return $sql;
     }
+
+    public function obt_anVen()
+    {
+        $sql=sql::obt_anVen();
+
+        return $sql;
+    }
 }
 
 ?>
