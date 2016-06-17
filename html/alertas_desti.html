@@ -1,0 +1,9 @@
+{% for des in desti %}
+    <tr>
+        <td>{{ des.id }}</td>
+        <td>{{ des.nom }}</td>
+        <td>{{ des.mail }}</td>
+        <td><a href="Javascript:ope_desti('del','{{des.id}}')" >X</a></td>
+    </tr>
+{% endfor %}
+

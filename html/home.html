@@ -8,16 +8,34 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="html/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- estilos -->
-    <link href="css/estilos.css" rel="stylesheet">
+        <link href="html/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- jquery -->
-    <script src="js/jquery-2.2.3.js" type="text/javascript"></script>
 
-    <!-- js -->
-    <script src="js/load.js" type="text/javascript" ></script>
+        <script src="js/jquery-2.2.3.js" type="text/javascript"></script>
+
+
+    <!-- jquery ui-->
+
+        <!-- jquery ui css -->
+        <link href="js/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" >
+
+        <!-- jquery ui -->
+        <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript" ></script>
+
+
+    <!-- OWNER -->
+
+        <!-- functions -->
+        <script src="functions.js" type="text/javascript"></script>
+
+        <!-- js -->
+        <script src="js/load.js" type="text/javascript" ></script>
+
+        <!-- css -->
+        <link href="css/estilos.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +47,7 @@
 <body>
 
 <!-- view -->
-<input type="hidden" value="home" id="view" >
+<input type="hidden" value="{{ view }}" id="view" >
 
 <div class="page-header">
     <h1>Modulo Vigencias <small>datos de vigencias</small></h1>
@@ -49,6 +67,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php?view=home">Vigencias</a></li>
                 <li><a href="index.php?view=importar">Importar Data</a></li>
+                <li><a href="index.php?view=alertas" >Alertas</a></li>
                 <li><a href="Javascript:salir()">Salir</a></li>
             </ul>
         </div>
@@ -64,24 +83,26 @@
 {% block content %}
 
 <section>
-    <select>
+    <select id="est_fil" >
         <option value="0" >Todas</option>
-        <option value="1" >vencidas</option>
-        <option value="2" >por vencer</option>
+        {% for tip in tipVig %}
+        <option value="{{ tip.tip_vigen_id }}" >{{ tip.tip_vigen_des }}</option>
+        {% endfor %}
     </select>
-    <select>
+    <select id="anu_fil" >
         <option value="0" >Todas</option>
         {% for an in anVen %}
         <option value="{{ an.anVen }}" >{{ an.anVen }}</option>
         {% endfor %}
     </select>
-    <select>
+    <select id="tip_fil" >
         <option value="0" >Todas</option>
         {% for tip in tipProd %}
         <option value="{{ tip.tip_prod_id }}" >{{ tip.tip_prod_des }}</option>
         {% endfor %}
     </select>
-    <input type="text" placeholder="CC" >
+    <input type="text" placeholder="CC" id="vigen_cc_des" >
+    <input type="hidden" placeholder="CC" id="vigen_cc_id" >
     <!--<input type="text" placeholder="Factura" >-->
     <!--<input type="text" placeholder="Serie" >-->
 </section>
@@ -95,6 +116,8 @@
         <th>Proyecto</th>
         <th>Cliente</th>
         <th>Factura</th>
+        <th>Contacto</th>
+        <th>Email</th>
         <th>Tip Prod</th>
         <th>Des Prod</th>
         <th>Serie</th>
@@ -105,7 +128,7 @@
         <th>Dias</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="vigen_tab_ajax" >
     {% for vig in vigen %}
     <tr>
         <th scope="row">{{ vig.vigen_id }}</th>
@@ -113,6 +136,8 @@
         <td>{{ vig.vigen_proy }}</td>
         <td>{{ vig.vigen_cli }}</td>
         <td>{{ vig.vigen_fac }}</td>
+        <td>{{ vig.vigen_contac }}</td>
+        <td>{{ vig.vigen_mail }}</td>
         <td>{{ vig.tip_prod }}</td>
         <td>{{ vig.vigen_des }}</td>
         <td>{{ vig.vigen_seri }}</td>
@@ -133,7 +158,7 @@
 {% endblock %}
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="html/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 </body>

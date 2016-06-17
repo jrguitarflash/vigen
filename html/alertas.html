@@ -1,0 +1,73 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+<form name="alert" method="post" >
+
+    <h3>Frecuencia</h3>
+    {% for frec in frecuAler %}
+    <span>{{ frec.vigen_frecu_des }}</span>&nbsp;<input type="radio" name="alert_frecu"  value="{{ frec.vigen_frecu_id }}" >
+    {% endfor %}
+
+    <h3>Vigencia</h3>
+    <span>Estado:</span>
+    <select id="estaVig" name="estaVig" >
+        <option value="0" >Todos</option>
+        {% for tip in tipVig %}
+        <option value="{{ tip.tip_vigen_id }}" >{{ tip.tip_vigen_des }}</option>
+        {% endfor %}
+    </select>
+    <span>Año:</span>
+    <select id="anVig" name="anVig" >
+        <option value="0" >Todos</option>
+        {% for an in anVen %}
+        <option value="{{ an.anVen }}" >{{ an.anVen }}</option>
+        {% endfor %}
+    </select>
+    <span>Tipo:</span>
+    <select id="tipVig" name="tipVig" >
+        <option value="0" >Todos</option>
+        {% for tip in tipProd %}
+        <option value="{{ tip.tip_prod_id }}" >{{ tip.tip_prod_des }}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+    <br>
+    <input type="button" value="Guardar" onclick="config_alert()" >
+    <input type="hidden" name="action" value="alertar" >
+    <input type="hidden" name="id_alert" id="id_alert" value="0" >
+
+</form>
+
+<h3>Destinatarios</h3>
+
+<span class="lbl_ale" >Nombre</span><input type="text" id="nom" ><br><br>
+<span class="lbl_ale" >Email</span><input type="text" id="mail" >
+
+<br>
+<br>
+<input type="button" value="Agregar" onclick="ope_desti('agre',0)" >
+<table class="table">
+    <!--<caption>Optional table caption.</caption>-->
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <td>Email</td>
+            <td>-</td>
+        </tr>
+    </thead>
+    <tbody id="desti_tab_ajax" >
+        {% for des in desti %}
+        <tr>
+            <td>{{ des.id }}</td>
+            <td>{{ des.nom }}</td>
+            <td>{{ des.mail }}</td>
+            <td><a href="Javascript:ope_desti('del','{{des.id}}')" >X</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

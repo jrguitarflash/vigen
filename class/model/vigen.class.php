@@ -3,6 +3,7 @@
 class vigen
 {
 
+    //MOD
     public static $vigen_id;
     public static $tip_prod_id;
     public static $vigen_cc;
@@ -14,7 +15,12 @@ class vigen
     public static $vigen_fac;
     public static $vigen_fechIni;
     public static $vigen_fechVigen;
+    public static $vigen_contac;
+    public static $vigen_mail;
 
+    //FIL
+    public static $est_fil;
+    public static $anu_fil;
 
     //SET
 
@@ -71,6 +77,28 @@ class vigen
     public function vigen_fechVigen_set($vigen_fechVigen)
     {
         self::$vigen_fechVigen=$vigen_fechVigen;
+    }
+
+    public function vigen_contac_set($vigen_contac)
+    {
+        self::$vigen_contac=$vigen_contac;
+    }
+
+    public function vigen_mail_set($vigen_mail)
+    {
+        self::$vigen_mail=$vigen_mail;
+    }
+
+    //FIL SET
+
+    public function est_fil_set($est_fil)
+    {
+        self::$est_fil=$est_fil;
+    }
+
+    public function anu_fil_set($anu_fil)
+    {
+        self::$anu_fil=$anu_fil;
     }
 
     //GET
@@ -130,6 +158,28 @@ class vigen
         return self::$vigen_fechVigen;
     }
 
+    public function vigen_contac_get()
+    {
+        return self::$vigen_contac;
+    }
+
+    public function vigen_mail_get()
+    {
+        return self::$vigen_mail;
+    }
+
+    //FILL GET
+
+    public function est_fil_get()
+    {
+        return self::$est_fil;
+    }
+
+    public function anu_fil_get()
+    {
+        return self::$anu_fil;
+    }
+
     //EXT
 
     public function insert_vigen()
@@ -145,6 +195,8 @@ class vigen
         $fac=self::vigen_fac_get();
         $fechIni=self::vigen_fechIni_get();
         $fechVig=self::vigen_fechVigen_get();
+        $contac=self::vigen_contac_get();
+        $mail=self::vigen_mail_get();
 
         $sql=sql::insert_vigen($tip,
                                 $cc,
@@ -155,7 +207,9 @@ class vigen
                                 $cli,
                                 $fac,
                                 $fechIni,
-                                $fechVig);
+                                $fechVig,
+                                $contac,
+                                $mail);
 
 
         return $sql;
@@ -165,7 +219,13 @@ class vigen
 
     public function obt_vigen()
     {
-        $sql=sql::obt_vigen();
+
+        $est=self::est_fil_get();
+        $anu=self::anu_fil_get();
+        $tip=self::tip_prod_id_get();
+        $cc=self::vigen_cc_get();
+
+        $sql=sql::obt_vigen($est,$anu,$tip,$cc);
 
         return $sql;
     }
@@ -173,6 +233,14 @@ class vigen
     public function obt_anVen()
     {
         $sql=sql::obt_anVen();
+
+        return $sql;
+    }
+
+    public function obt_ccVig()
+    {
+
+        $sql=sql::obt_ccVig();
 
         return $sql;
     }

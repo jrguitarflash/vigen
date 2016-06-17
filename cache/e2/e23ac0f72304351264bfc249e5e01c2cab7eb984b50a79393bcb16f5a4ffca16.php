@@ -27,16 +27,34 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href=\"html/bootstrap-3.3.6-dist/css/bootstrap.min.css\" rel=\"stylesheet\">
 
-    <!-- estilos -->
-    <link href=\"css/estilos.css\" rel=\"stylesheet\">
+        <link href=\"html/bootstrap-3.3.6-dist/css/bootstrap.min.css\" rel=\"stylesheet\">
+
 
     <!-- jquery -->
-    <script src=\"js/jquery-2.2.3.js\" type=\"text/javascript\"></script>
 
-    <!-- js -->
-    <script src=\"js/load.js\" type=\"text/javascript\" ></script>
+        <script src=\"js/jquery-2.2.3.js\" type=\"text/javascript\"></script>
+
+
+    <!-- jquery ui-->
+
+        <!-- jquery ui css -->
+        <link href=\"js/jquery-ui-1.11.4.custom/jquery-ui.min.css\" rel=\"stylesheet\" >
+
+        <!-- jquery ui -->
+        <script src=\"js/jquery-ui-1.11.4.custom/jquery-ui.js\" type=\"text/javascript\" ></script>
+
+
+    <!-- OWNER -->
+
+        <!-- functions -->
+        <script src=\"functions.js\" type=\"text/javascript\"></script>
+
+        <!-- js -->
+        <script src=\"js/load.js\" type=\"text/javascript\" ></script>
+
+        <!-- css -->
+        <link href=\"css/estilos.css\" rel=\"stylesheet\">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,7 +66,10 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 <body>
 
 <!-- view -->
-<input type=\"hidden\" value=\"home\" id=\"view\" >
+<input type=\"hidden\" value=\"";
+        // line 50
+        echo twig_escape_filter($this->env, (isset($context["view"]) ? $context["view"] : null), "html", null, true);
+        echo "\" id=\"view\" >
 
 <div class=\"page-header\">
     <h1>Modulo Vigencias <small>datos de vigencias</small></h1>
@@ -68,6 +89,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
             <ul class=\"nav navbar-nav\">
                 <li class=\"active\"><a href=\"index.php?view=home\">Vigencias</a></li>
                 <li><a href=\"index.php?view=importar\">Importar Data</a></li>
+                <li><a href=\"index.php?view=alertas\" >Alertas</a></li>
                 <li><a href=\"Javascript:salir()\">Salir</a></li>
             </ul>
         </div>
@@ -76,48 +98,63 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 
 <span class=\"user\" >
     ";
-        // line 59
+        // line 78
         echo twig_escape_filter($this->env, (isset($context["usuario"]) ? $context["usuario"] : null), "html", null, true);
         echo "
 </span>
 
 <span id=\"mensaje\" >";
-        // line 62
+        // line 81
         echo twig_escape_filter($this->env, (isset($context["mensaje"]) ? $context["mensaje"] : null), "html", null, true);
         echo "</span>
 
 ";
-        // line 64
+        // line 83
         $this->displayBlock('content', $context, $blocks);
-        // line 134
+        // line 159
         echo "
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
+<!--<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>-->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src=\"html/bootstrap-3.3.6-dist/js/bootstrap.min.js\"></script>
 </body>
 </html>";
     }
 
-    // line 64
+    // line 83
     public function block_content($context, array $blocks = array())
     {
-        // line 65
+        // line 84
         echo "
 <section>
-    <select>
-        <option>Todas</option>
-        <option>vencidas</option>
-        <option>por vencer</option>
-    </select>
-    <select>
-        <option>Todas</option>
+    <select id=\"est_fil\" >
+        <option value=\"0\" >Todas</option>
         ";
-        // line 74
+        // line 88
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["tipVig"]) ? $context["tipVig"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["tip"]) {
+            // line 89
+            echo "        <option value=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tip"], "tip_vigen_id", array()), "html", null, true);
+            echo "\" >";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tip"], "tip_vigen_des", array()), "html", null, true);
+            echo "</option>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tip'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 91
+        echo "    </select>
+    <select id=\"anu_fil\" >
+        <option value=\"0\" >Todas</option>
+        ";
+        // line 94
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["anVen"]) ? $context["anVen"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["an"]) {
-            // line 75
+            // line 95
             echo "        <option value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["an"], "anVen", array()), "html", null, true);
             echo "\" >";
@@ -128,16 +165,16 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['an'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 77
+        // line 97
         echo "    </select>
-    <select>
+    <select id=\"tip_fil\" >
         <option value=\"0\" >Todas</option>
         ";
-        // line 80
+        // line 100
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["tipProd"]) ? $context["tipProd"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["tip"]) {
-            // line 81
+            // line 101
             echo "        <option value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["tip"], "tip_prod_id", array()), "html", null, true);
             echo "\" >";
@@ -148,9 +185,10 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tip'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 83
+        // line 103
         echo "    </select>
-    <input type=\"text\" placeholder=\"CC\" >
+    <input type=\"text\" placeholder=\"CC\" id=\"vigen_cc_des\" >
+    <input type=\"hidden\" placeholder=\"CC\" id=\"vigen_cc_id\" >
     <!--<input type=\"text\" placeholder=\"Factura\" >-->
     <!--<input type=\"text\" placeholder=\"Serie\" >-->
 </section>
@@ -164,6 +202,8 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
         <th>Proyecto</th>
         <th>Cliente</th>
         <th>Factura</th>
+        <th>Contacto</th>
+        <th>Email</th>
         <th>Tip Prod</th>
         <th>Des Prod</th>
         <th>Serie</th>
@@ -174,85 +214,93 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
         <th>Dias</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id=\"vigen_tab_ajax\" >
     ";
-        // line 109
+        // line 132
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["vigen"]) ? $context["vigen"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["vig"]) {
-            // line 110
+            // line 133
             echo "    <tr>
         <th scope=\"row\">";
-            // line 111
+            // line 134
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_id", array()), "html", null, true);
             echo "</th>
         <td>";
-            // line 112
+            // line 135
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_cc", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 113
+            // line 136
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_proy", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 114
+            // line 137
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_cli", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 115
+            // line 138
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_fac", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 116
+            // line 139
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_contac", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 140
+            echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_mail", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 141
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "tip_prod", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 117
+            // line 142
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_des", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 118
+            // line 143
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_seri", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 119
+            // line 144
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_mar", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 120
+            // line 145
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_fechIni", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 121
+            // line 146
             echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "vigen_fechVigen", array()), "html", null, true);
             echo "</td>
         <td>";
-            // line 122
+            // line 147
             echo $this->getAttribute($context["vig"], "esta_vigen", array());
             echo "</td>
         ";
-            // line 123
+            // line 148
             if (($this->getAttribute($context["vig"], "dif_fech", array()) > 0)) {
-                // line 124
+                // line 149
                 echo "        <td>";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["vig"], "dif_fech", array()), "html", null, true);
                 echo "</td>
         ";
             } else {
-                // line 126
+                // line 151
                 echo "        <td>";
                 echo twig_escape_filter($this->env, ($this->getAttribute($context["vig"], "dif_fech", array()) *  -1), "html", null, true);
                 echo "</td>
         ";
             }
-            // line 128
+            // line 153
             echo "    </tr>
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['vig'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 130
+        // line 155
         echo "    </tbody>
 </table>
 
@@ -271,7 +319,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 
     public function getDebugInfo()
     {
-        return array (  256 => 130,  249 => 128,  243 => 126,  237 => 124,  235 => 123,  231 => 122,  227 => 121,  223 => 120,  219 => 119,  215 => 118,  211 => 117,  207 => 116,  203 => 115,  199 => 114,  195 => 113,  191 => 112,  187 => 111,  184 => 110,  180 => 109,  152 => 83,  141 => 81,  137 => 80,  132 => 77,  121 => 75,  117 => 74,  106 => 65,  103 => 64,  93 => 134,  91 => 64,  86 => 62,  80 => 59,  20 => 1,);
+        return array (  304 => 155,  297 => 153,  291 => 151,  285 => 149,  283 => 148,  279 => 147,  275 => 146,  271 => 145,  267 => 144,  263 => 143,  259 => 142,  255 => 141,  251 => 140,  247 => 139,  243 => 138,  239 => 137,  235 => 136,  231 => 135,  227 => 134,  224 => 133,  220 => 132,  189 => 103,  178 => 101,  174 => 100,  169 => 97,  158 => 95,  154 => 94,  149 => 91,  138 => 89,  134 => 88,  128 => 84,  125 => 83,  115 => 159,  113 => 83,  108 => 81,  102 => 78,  71 => 50,  20 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -284,16 +332,34 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*     <title>Bootstrap 101 Template</title>*/
 /* */
 /*     <!-- Bootstrap -->*/
-/*     <link href="html/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">*/
 /* */
-/*     <!-- estilos -->*/
-/*     <link href="css/estilos.css" rel="stylesheet">*/
+/*         <link href="html/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">*/
+/* */
 /* */
 /*     <!-- jquery -->*/
-/*     <script src="js/jquery-2.2.3.js" type="text/javascript"></script>*/
 /* */
-/*     <!-- js -->*/
-/*     <script src="js/load.js" type="text/javascript" ></script>*/
+/*         <script src="js/jquery-2.2.3.js" type="text/javascript"></script>*/
+/* */
+/* */
+/*     <!-- jquery ui-->*/
+/* */
+/*         <!-- jquery ui css -->*/
+/*         <link href="js/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" >*/
+/* */
+/*         <!-- jquery ui -->*/
+/*         <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript" ></script>*/
+/* */
+/* */
+/*     <!-- OWNER -->*/
+/* */
+/*         <!-- functions -->*/
+/*         <script src="functions.js" type="text/javascript"></script>*/
+/* */
+/*         <!-- js -->*/
+/*         <script src="js/load.js" type="text/javascript" ></script>*/
+/* */
+/*         <!-- css -->*/
+/*         <link href="css/estilos.css" rel="stylesheet">*/
 /* */
 /*     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->*/
 /*     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->*/
@@ -305,7 +371,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /* <body>*/
 /* */
 /* <!-- view -->*/
-/* <input type="hidden" value="home" id="view" >*/
+/* <input type="hidden" value="{{ view }}" id="view" >*/
 /* */
 /* <div class="page-header">*/
 /*     <h1>Modulo Vigencias <small>datos de vigencias</small></h1>*/
@@ -325,6 +391,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*             <ul class="nav navbar-nav">*/
 /*                 <li class="active"><a href="index.php?view=home">Vigencias</a></li>*/
 /*                 <li><a href="index.php?view=importar">Importar Data</a></li>*/
+/*                 <li><a href="index.php?view=alertas" >Alertas</a></li>*/
 /*                 <li><a href="Javascript:salir()">Salir</a></li>*/
 /*             </ul>*/
 /*         </div>*/
@@ -340,24 +407,26 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /* {% block content %}*/
 /* */
 /* <section>*/
-/*     <select>*/
-/*         <option>Todas</option>*/
-/*         <option>vencidas</option>*/
-/*         <option>por vencer</option>*/
+/*     <select id="est_fil" >*/
+/*         <option value="0" >Todas</option>*/
+/*         {% for tip in tipVig %}*/
+/*         <option value="{{ tip.tip_vigen_id }}" >{{ tip.tip_vigen_des }}</option>*/
+/*         {% endfor %}*/
 /*     </select>*/
-/*     <select>*/
-/*         <option>Todas</option>*/
+/*     <select id="anu_fil" >*/
+/*         <option value="0" >Todas</option>*/
 /*         {% for an in anVen %}*/
 /*         <option value="{{ an.anVen }}" >{{ an.anVen }}</option>*/
 /*         {% endfor %}*/
 /*     </select>*/
-/*     <select>*/
+/*     <select id="tip_fil" >*/
 /*         <option value="0" >Todas</option>*/
 /*         {% for tip in tipProd %}*/
 /*         <option value="{{ tip.tip_prod_id }}" >{{ tip.tip_prod_des }}</option>*/
 /*         {% endfor %}*/
 /*     </select>*/
-/*     <input type="text" placeholder="CC" >*/
+/*     <input type="text" placeholder="CC" id="vigen_cc_des" >*/
+/*     <input type="hidden" placeholder="CC" id="vigen_cc_id" >*/
 /*     <!--<input type="text" placeholder="Factura" >-->*/
 /*     <!--<input type="text" placeholder="Serie" >-->*/
 /* </section>*/
@@ -371,6 +440,8 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*         <th>Proyecto</th>*/
 /*         <th>Cliente</th>*/
 /*         <th>Factura</th>*/
+/*         <th>Contacto</th>*/
+/*         <th>Email</th>*/
 /*         <th>Tip Prod</th>*/
 /*         <th>Des Prod</th>*/
 /*         <th>Serie</th>*/
@@ -381,7 +452,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*         <th>Dias</th>*/
 /*     </tr>*/
 /*     </thead>*/
-/*     <tbody>*/
+/*     <tbody id="vigen_tab_ajax" >*/
 /*     {% for vig in vigen %}*/
 /*     <tr>*/
 /*         <th scope="row">{{ vig.vigen_id }}</th>*/
@@ -389,6 +460,8 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /*         <td>{{ vig.vigen_proy }}</td>*/
 /*         <td>{{ vig.vigen_cli }}</td>*/
 /*         <td>{{ vig.vigen_fac }}</td>*/
+/*         <td>{{ vig.vigen_contac }}</td>*/
+/*         <td>{{ vig.vigen_mail }}</td>*/
 /*         <td>{{ vig.tip_prod }}</td>*/
 /*         <td>{{ vig.vigen_des }}</td>*/
 /*         <td>{{ vig.vigen_seri }}</td>*/
@@ -409,7 +482,7 @@ class __TwigTemplate_ffa6e26beb89519f21bc02212e588035365fba1639b1bb052c9706a06be
 /* {% endblock %}*/
 /* */
 /* <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->*/
-/* <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*/
+/* <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->*/
 /* <!-- Include all compiled plugins (below), or include individual files as needed -->*/
 /* <script src="html/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>*/
 /* </body>*/

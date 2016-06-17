@@ -1,0 +1,23 @@
+{% for vig in vigen %}
+<tr>
+    <th scope="row">{{ vig.vigen_id }}</th>
+    <td>{{ vig.vigen_cc }}</td>
+    <td>{{ vig.vigen_proy }}</td>
+    <td>{{ vig.vigen_cli }}</td>
+    <td>{{ vig.vigen_fac }}</td>
+    <td>{{ vig.vigen_contac }}</td>
+    <td>{{ vig.vigen_mail }}</td>
+    <td>{{ vig.tip_prod }}</td>
+    <td>{{ vig.vigen_des }}</td>
+    <td>{{ vig.vigen_seri }}</td>
+    <td>{{ vig.vigen_mar }}</td>
+    <td>{{ vig.vigen_fechIni }}</td>
+    <td>{{ vig.vigen_fechVigen }}</td>
+    <td>{{ vig.esta_vigen|raw }}</td>
+    {% if vig.dif_fech>0 %}
+    <td>{{ vig.dif_fech }}</td>
+    {% else %}
+    <td>{{ vig.dif_fech*-1 }}</td>
+    {% endif %}
+</tr>
+{% endfor %}
